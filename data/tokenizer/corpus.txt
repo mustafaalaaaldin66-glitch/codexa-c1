@@ -1,0 +1,15 @@
+أنا أتعلم البرمجة وبناء نماذج الذكاء الاصطناعي.
+أريد أن أفهم كيف تعمل النماذج اللغوية من الداخل.
+العربية لغة غنية بالمفردات والتصريفات.
+هذا اختبار للنص العربي.
+
+I am learning programming and building language models.
+I want to understand how language models work internally.
+English text is included because Codexa is bilingual.
+
+مرحبا hello
+الذكاء artificial intelligence
+Python PyTorch NumPy
+123 456 789
+email@example.com
+https://example.com
