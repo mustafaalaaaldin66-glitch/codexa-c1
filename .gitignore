@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/*
+
+# Local secrets
+.env
+.env.*
+*.secret
+*.pem
+*.key
+
+# Local logs
+*.log
+
+# Experiment outputs
+runs/
+outputs/
+wandb/
+mlruns/
+
+# Model/checkpoint artifacts
+checkpoints/
+*.pt
+*.pth
+*.safetensors
+*.onnx
+*.gguf
+
+# Large local datasets
+data/raw/*
+data/processed/*
+data/cache/*
+
+# Temporary files
+tmp/
+temp/
