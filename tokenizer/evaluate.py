@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+import hashlib
+import json
 import sys
 from pathlib import Path
 from time import perf_counter
 
-# ضبط مسار المشروع الرئيسي لتفادي أخطاء الاستيراد
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -12,207 +13,145 @@ if str(PROJECT_ROOT) not in sys.path:
 from tokenizers import Tokenizer
 
 from text.normalize import normalize_text
-
+from tokenizer.metrics import chars_per_token, tokens_per_word
 
 TOKENIZER_PATH = (
-    PROJECT_ROOT
-    / "tokenizer"
-    / "artifacts"
-    / "bpe32k"
-    / "tokenizer.json"
+    PROJECT_ROOT / "tokenizer" / "artifacts" / "bpe32k" / "tokenizer.json"
 )
-
 EVAL_DIR = PROJECT_ROOT / "data" / "tokenizer_eval"
+MANIFEST_PATH = EVAL_DIR / "manifest.json"
 
-FILES = {
-    "arabic": EVAL_DIR / "arabic.txt",
-    "english": EVAL_DIR / "english.txt",
-    "mixed": EVAL_DIR / "mixed.txt",
-}
+
+def get_file_hash(path: Path) -> str:
+    sha = hashlib.sha256()
+    with path.open("rb") as f:
+        while chunk := f.read(8192):
+            sha.update(chunk)
+    return sha.hexdigest()[:12]
 
 
 def load_tokenizer() -> Tokenizer:
     if not TOKENIZER_PATH.exists():
-        raise FileNotFoundError(
-            f"Tokenizer not found: {TOKENIZER_PATH}"
-        )
-
+        raise FileNotFoundError(f"Tokenizer not found: {TOKENIZER_PATH}")
     return Tokenizer.from_file(str(TOKENIZER_PATH))
 
 
-def read_lines(path: Path) -> list[str]:
-    if not path.exists():
-        raise FileNotFoundError(f"Evaluation file missing: {path}")
-
+def read_file_lines(path: Path) -> list[str]:
     lines = []
-
     with path.open("r", encoding="utf-8") as f:
         for line in f:
             line = line.rstrip("\n")
-
             if line.strip():
                 lines.append(line)
-
-    if not lines:
-        raise ValueError(f"Evaluation file is empty: {path}")
-
     return lines
 
 
-def word_count(text: str) -> int:
-    return len(text.split())
-
-
-def evaluate_corpus(
-    tokenizer: Tokenizer,
-    name: str,
-    path: Path,
-) -> dict[str, float]:
-    raw_lines = read_lines(path)
-
-    normalized_lines = [
-        normalize_text(line)
-        for line in raw_lines
-    ]
-
+def evaluate_category(tokenizer: Tokenizer, category_dir: Path) -> dict:
     total_words = 0
     total_tokens = 0
     total_chars = 0
     total_unknown = 0
+    passed_rt = 0
+    failed_rt = 0
 
+    txt_files = list(category_dir.glob("*.txt"))
     start = perf_counter()
 
-    for text in normalized_lines:
-        if not text:
-            continue
+    for file_path in txt_files:
+        lines = read_file_lines(file_path)
+        for raw in lines:
+            normalized = normalize_text(raw)
+            if not normalized:
+                continue
 
-        encoding = tokenizer.encode(text)
+            encoding = tokenizer.encode(normalized)
+            decoded = tokenizer.decode(encoding.ids)
 
-        total_words += word_count(text)
-        total_tokens += len(encoding.ids)
-        total_chars += len(text)
+            if decoded == normalized:
+                passed_rt += 1
+            else:
+                failed_rt += 1
 
-        unk_id = tokenizer.token_to_id("<unk>")
+            total_words += len(normalized.split())
+            total_tokens += len(encoding.ids)
+            total_chars += len(normalized)
 
-        if unk_id is not None:
-            total_unknown += sum(
-                token_id == unk_id
-                for token_id in encoding.ids
-            )
+            unk_id = tokenizer.token_to_id("<unk>")
+            if unk_id is not None:
+                total_unknown += sum(
+                    1 for tid in encoding.ids if tid == unk_id
+                )
 
     elapsed = perf_counter() - start
 
-    tokens_per_second = (
-        total_tokens / elapsed
-        if elapsed > 0
-        else 0.0
-    )
-
-    tokens_per_word = (
-        total_tokens / total_words
-        if total_words > 0
-        else 0.0
-    )
-
-    chars_per_token = (
-        total_chars / total_tokens
-        if total_tokens > 0
-        else 0.0
-    )
-
-    unknown_rate = (
-        total_unknown / total_tokens
-        if total_tokens > 0
-        else 0.0
-    )
-
-    print()
-    print(f"=== {name.upper()} ===")
-    print(f"Lines:            {len(normalized_lines):,}")
-    print(f"Words:            {total_words:,}")
-    print(f"Characters:       {total_chars:,}")
-    print(f"Tokens:           {total_tokens:,}")
-    print(f"Tokens / word:    {tokens_per_word:.4f}")
-    print(f"Chars / token:    {chars_per_token:.4f}")
-    print(f"Unknown rate:     {unknown_rate:.6%}")
-    print(f"Tokenizer tok/s:  {tokens_per_second:,.2f}")
+    tpw = tokens_per_word(total_tokens, total_words)
+    cpt = chars_per_token(total_chars, total_tokens)
+    unk_rate = total_unknown / total_tokens if total_tokens > 0 else 0.0
+    tok_per_sec = total_tokens / elapsed if elapsed > 0 else 0.0
 
     return {
-        "lines": len(normalized_lines),
         "words": total_words,
-        "characters": total_chars,
+        "chars": total_chars,
         "tokens": total_tokens,
-        "tokens_per_word": tokens_per_word,
-        "chars_per_token": chars_per_token,
-        "unknown_rate": unknown_rate,
-        "tokens_per_second": tokens_per_second,
+        "tokens_per_word": tpw,
+        "chars_per_token": cpt,
+        "unk_rate": unk_rate,
+        "throughput_tok_s": tok_per_sec,
+        "passed_rt": passed_rt,
+        "failed_rt": failed_rt,
     }
 
 
-def round_trip_check(
-    tokenizer: Tokenizer,
-    name: str,
-    path: Path,
-) -> tuple[int, int]:
-    raw_lines = read_lines(path)
-
-    passed = 0
-    failed = 0
-
-    for raw in raw_lines:
-        normalized = normalize_text(raw)
-
-        encoded = tokenizer.encode(normalized)
-        decoded = tokenizer.decode(encoded.ids)
-
-        if decoded == normalized:
-            passed += 1
-        else:
-            failed += 1
-
-            print("\nROUND-TRIP FAILURE")
-            print("Raw:       ", repr(raw))
-            print("Normalized:", repr(normalized))
-            print("Decoded:   ", repr(decoded))
-
-    return passed, failed
-
-
 def main() -> None:
-    print("===================================")
-    print("Codexa T0 Tokenizer Evaluation")
-    print("===================================")
+    print("==================================================")
+    print(" Codexa Tokenizer Evaluation Harness (v1) ")
+    print("==================================================")
+
+    if not MANIFEST_PATH.exists():
+        raise FileNotFoundError(f"Manifest missing: {MANIFEST_PATH}")
+
+    with MANIFEST_PATH.open("r", encoding="utf-8") as f:
+        manifest = json.load(f)
 
     tokenizer = load_tokenizer()
+    tok_hash = get_file_hash(TOKENIZER_PATH)
 
+    print(f"Eval Version:    {manifest.get('version')}")
+    print(f"Normalizer:      {manifest.get('normalization')}")
+    print(f"Tokenizer Hash:  {tok_hash}")
     print(f"Vocabulary size: {tokenizer.get_vocab_size()}")
+    print("-" * 50)
 
     total_passed = 0
     total_failed = 0
 
-    for name, path in FILES.items():
-        evaluate_corpus(tokenizer, name, path)
+    for category in manifest.get("categories", []):
+        cat_dir = EVAL_DIR / category
+        if not cat_dir.exists():
+            continue
 
-        passed, failed = round_trip_check(
-            tokenizer,
-            name,
-            path,
+        metrics = evaluate_category(tokenizer, cat_dir)
+        total_passed += metrics["passed_rt"]
+        total_failed += metrics["failed_rt"]
+
+        print(f"\n=== CATEGORY: {category.upper()} ===")
+        print(f"Tokens / Word:   {metrics['tokens_per_word']:.4f}")
+        print(f"Chars / Token:   {metrics['chars_per_token']:.4f}")
+        print(f"Unknown Rate:    {metrics['unk_rate']:.6%}")
+        print(f"Throughput:      {metrics['throughput_tok_s']:,.2f} tok/s")
+        print(
+            f"Round-Trip:      {metrics['passed_rt']} Passed / {metrics['failed_rt']} Failed"
         )
 
-        total_passed += passed
-        total_failed += failed
+    print("\n" + "=" * 50)
+    print("=== FINAL EVALUATION SUMMARY ===")
+    print(f"Total Passed Round-Trips: {total_passed}")
+    print(f"Total Failed Round-Trips: {total_failed}")
 
-    print()
-    print("=== ROUND-TRIP SUMMARY ===")
-    print(f"Passed: {total_passed}")
-    print(f"Failed: {total_failed}")
+    if total_failed > 0:
+        raise RuntimeError("Validation Error: Round-trip failed for some cases.")
 
-    if total_failed != 0:
-        raise RuntimeError(
-            "Tokenizer round-trip failed."
-        )
-
-    print("Round-trip: 100% PASS")
+    print("STATUS: 100% PASS - Evaluation Harness Ready!")
 
 
 if __name__ == "__main__":

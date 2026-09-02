@@ -1,0 +1,1 @@
+The model learns statistical patterns from large collections of text.

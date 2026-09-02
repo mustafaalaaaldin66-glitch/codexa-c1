@@ -1,0 +1,2 @@
+أنا أستخدم Python لبناء language model.
+الـTransformer يحتاج إلى attention mechanism.
