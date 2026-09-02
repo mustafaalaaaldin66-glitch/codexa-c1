@@ -1,0 +1,5 @@
+أنا أتعلم programming باستخدام Python.
+هذا نموذج Arabic-English language model.
+نستخدم PyTorch لبناء transformer model.
+الذكاء الاصطناعي AI أصبح مجالًا مهمًا جدًا.
+أنا أعمل على Codexa C1 وأختبر tokenizer.

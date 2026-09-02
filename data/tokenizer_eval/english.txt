@@ -1,0 +1,7 @@
+This is an English evaluation sentence.
+Language models learn statistical patterns from text.
+Programming and artificial intelligence are important domains.
+This dataset should contain common and less common words.
+Here are numbers: 123456.
+Here is a URL: https://example.com.
+Here is an email: user@example.com.
