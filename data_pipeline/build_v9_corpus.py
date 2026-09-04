@@ -1,3 +1,4 @@
+import torch
 import hashlib
 import json
 import re

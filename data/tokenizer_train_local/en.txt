@@ -1,0 +1,3 @@
+I am learning programming and building language models.
+I want to understand how language models work internally.
+English text is included because Codexa is bilingual.

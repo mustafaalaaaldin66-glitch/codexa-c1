@@ -1,0 +1,54 @@
+{
+  "version": "tokenizer-train-local-dev-v1",
+  "mode": "local-development-only",
+  "source_file": "data\\tokenizer\\corpus.txt",
+  "normalization": "norm-v1",
+  "categories": [
+    {
+      "category": "ar",
+      "file_path": "data\\tokenizer_train_local\\ar.txt",
+      "line_count": 3,
+      "word_count": 21,
+      "char_count": 133,
+      "file_sha256": "b6adf17faa987928400dc0a604a9b4d062cd10c1a685328e453643e6f9a25197"
+    },
+    {
+      "category": "en",
+      "file_path": "data\\tokenizer_train_local\\en.txt",
+      "line_count": 3,
+      "word_count": 25,
+      "char_count": 165,
+      "file_sha256": "a27aa0298a386244b251cdfbd05f1e1b09e501e58b87e5d3cd6af687a82c5618"
+    },
+    {
+      "category": "mixed",
+      "file_path": "data\\tokenizer_train_local\\mixed.txt",
+      "line_count": 1,
+      "word_count": 3,
+      "char_count": 30,
+      "file_sha256": "5260a133f9ff31596686783c6b3a15f0e8cbc20df927dfdff649577321ff1a4f"
+    },
+    {
+      "category": "other",
+      "file_path": "data\\tokenizer_train_local\\other.txt",
+      "line_count": 0,
+      "word_count": 0,
+      "char_count": 0,
+      "file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "stats": {
+    "input": 13,
+    "quality_rejected": 6,
+    "empty_after_normalization": 0,
+    "exact_duplicates": 0,
+    "eval_contamination": 0,
+    "accepted": 7
+  },
+  "notes": [
+    "Development unblock only.",
+    "Not the final V9 production tokenizer corpus.",
+    "No near-dedup in this local mode.",
+    "No external dataset download."
+  ]
+}
