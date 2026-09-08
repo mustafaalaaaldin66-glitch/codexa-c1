@@ -1,4 +1,14 @@
 ﻿# CODEXA C1 — SESSION RESUME
+# V10 FREEZE
+Date: 2026-09-08
+Authority: CODEXA_C1_MASTER_PLAN_v10
+Delivery model: C1-66 (65,690,496) — NOT 604M.
+604M/MobileLLM-600 reference-only, forbidden as training target.
+Probe models: Nano-13 and Proxy-21.
+Do not resume the 39.33M run or any run with step-0 loss != ~10.4.
+E8400 is not a trainer.
+Next: production tokenizer corpus, then model.py.
+
 # Last updated: 2026-09-06
 
 ## ENVIRONMENT
@@ -120,6 +130,7 @@ Do not rebuild the tokenizer.
 Do not rebuild the token cache unless a verification proves it is corrupted.
 
 ## ARCHITECTURE TARGETS
+REVOKED as delivery.
 Final C1 target:
 ~604M parameters
 40 Transformer layers

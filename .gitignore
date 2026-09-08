@@ -1,6 +1,8 @@
 # Python
 __pycache__/
+**pycache**/
 *.py[cod]
+*.pyc
 *.pyo
 
 # Virtual environments
@@ -37,12 +39,14 @@ desktop.ini
 
 # Experiment outputs
 runs/
+archive/
 outputs/
 wandb/
 mlruns/
 
 # Model/checkpoint artifacts
 checkpoints/
+*.bin
 *.pt
 *.pth
 *.safetensors
@@ -50,6 +54,11 @@ checkpoints/
 *.gguf
 
 # Large local datasets
+data/tokenizer_train_v9_1/
+data/packed/
+data/raw/
+hf_cache/
+.cache/
 data/raw/*
 data/processed/*
 data/cache/*
