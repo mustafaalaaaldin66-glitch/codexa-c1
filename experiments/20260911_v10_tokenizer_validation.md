@@ -70,7 +70,19 @@ rerunning this evaluation.
 Instantiate C1-66 -> forward loss finite -> backward grads > 0 -> checkpoint
 save/load exact -> tied embeddings. No long training started on CPU.
 
-## 8. Server gate
+## 8. CPU training benchmark (bench_c166.py)
+One low-priority step at sequence length 64 completed without a crash:
+
+- 4.606 seconds/step
+- 13.90 tokens/second
+- peak RSS: 1,332 MB
+- 1,000 steps: approximately 76.8 minutes
+- 1B tokens: approximately 19,990 hours
+
+This confirms that the local CPU is suitable for smoke tests only, not real
+pretraining.
+
+## 9. Server gate
 A server is required only for: full-corpus tokenizer training (2.2 h, RAM),
 real pretraining, GPU work, or many experiments. The server command and exact
 requirements must be documented before the external run is started.
