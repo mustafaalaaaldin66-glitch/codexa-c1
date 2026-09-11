@@ -1,0 +1,41 @@
+{
+  "version": "tokenizer_train_v10",
+  "created_at": "2026-09-11T16:38:10.975555+00:00",
+  "normalizer": "text.normalize.normalize_text",
+  "dedup": "exact SHA-256 of normalized text; tokenizer_eval excluded",
+  "length_chars": [
+    40,
+    8000
+  ],
+  "counts": {
+    "ar": {
+      "target": 2000000,
+      "files": [
+        "data\\raw\\fineweb2_arb_arab_sample"
+      ],
+      "accepted": 61825,
+      "bytes": 2806077399,
+      "sha256": "b058489d90ae14ecedb8bbf123f942377a5eecbb8e41e5ddd1bc2402b9c4105e"
+    },
+    "arz": {
+      "target": 400000,
+      "files": [
+        "data\\raw\\fineweb2_arz_arab"
+      ],
+      "accepted": 400000,
+      "bytes": 1183838153,
+      "sha256": "fa2f68ce06dbf191ba8c247f2555b8b2f743f3693966c4789076a4dedff7e84c"
+    },
+    "en": {
+      "target": 0,
+      "accepted": 0,
+      "bytes": 0,
+      "sha256": ""
+    }
+  },
+  "corpus": {
+    "path": "data\\tokenizer\\corpus.txt",
+    "bytes": 3989915552,
+    "sha256": "60a8fa6583fd215c59ef01ae5163f32cc889f53b301bf5172ac96b154b79d93b"
+  }
+}

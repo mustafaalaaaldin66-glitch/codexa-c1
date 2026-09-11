@@ -1,0 +1,40 @@
+{
+  "version": "tokenizer-train-corpus-v9.1-fastpath-arabic",
+  "source_id": "fineweb2_arb_arab",
+  "dataset": "HuggingFaceFW/fineweb-2",
+  "config": "arb_Arab",
+  "split": "train",
+  "reader": "duckdb",
+  "normalization": "norm-v1",
+  "target_samples": 20000,
+  "accepted_samples": 20025,
+  "source_rows_processed": 1142,
+  "rejected_quality": 18072,
+  "rejected_duplicate": 20875,
+  "rejected_decontamination": 0,
+  "elapsed_seconds": 75.67,
+  "throughput_accepted_lines_per_second": 264.637,
+  "shards": [
+    {
+      "shard": 0,
+      "file_path": "data\\tokenizer_train_v9_1\\arabic\\arabic-00000.txt",
+      "line_count": 10000,
+      "char_count": 2140651,
+      "sha256_file_bytes": "de401657fadeb450b505bf502890614749b9fd072ed0f15f6969a0d6f9236dba"
+    },
+    {
+      "shard": 1,
+      "file_path": "data\\tokenizer_train_v9_1\\arabic\\arabic-00001.txt",
+      "line_count": 10000,
+      "char_count": 1993464,
+      "sha256_file_bytes": "82d2b475bd06455d0a8cd33fa7b2ba611030f37905b4587816f5ec9b9de9e661"
+    },
+    {
+      "shard": 2,
+      "file_path": "data\\tokenizer_train_v9_1\\arabic\\arabic-00002.txt",
+      "line_count": 25,
+      "char_count": 14693,
+      "sha256_file_bytes": "8c1787fe599117198f1ccd9605381dc67d78c331becd38c9cd69151ef5de5249"
+    }
+  ]
+}

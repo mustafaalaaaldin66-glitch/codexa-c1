@@ -55,6 +55,9 @@ checkpoints/
 
 # Large local datasets
 data/tokenizer_train_v9_1/
+data/tokenizer_train_v10/
+data/tokenizer/corpus.txt
+data/tokenizer/corpus.normalized.txt
 data/packed/
 data/raw/
 hf_cache/
@@ -66,3 +69,13 @@ data/cache/*
 # Temporary files
 tmp/
 temp/
+*.tmp
+
+# Local agent status and pipeline logs
+build_log.txt
+finalize_log.txt
+status_check.txt
+model_check.txt
+procs*.txt
+cs_out.txt
+ver.txt
