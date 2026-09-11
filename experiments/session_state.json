@@ -1,14 +1,14 @@
 {
   "version": "session-state-v1",
-  "updated_utc": "2026-09-11T22:00:00+00:00",
+  "updated_utc": "2026-09-11T22:45:00+00:00",
   "branch": "main",
-  "commit_sha": "bea0b3583234b99cb8dfa9163a33f8eeacefe8c9",
+  "commit_sha": "5c2ddfbf48dc13594788598debd15c68632f479a",
   "working_tree": "dirty",
   "dirty_files": [
     "tokenizer/artifacts/bpe32k/tokenizer.json"
   ],
   "untracked": [
-    "data/heldout/"
+    "data/heldout/arz_test_heldout.txt"
   ],
   "python": "3.11.9",
   "torch": "2.6.0+cpu",
@@ -19,7 +19,7 @@
   "blockers": [
     "working tree is dirty: tokenizer/artifacts/bpe32k/tokenizer.json is a 32768-vocab overwrite of a 272-vocab HEAD stub; do not claim clean",
     "do not run full 4GB corpus/tokenizer/model work on 4GB local machine; server required",
-    "data_pipeline/build_arz_heldout_v10.py exceeded 30s tool timeout once because train_hashes hashed 1.1GB; fixed to low-memory prefix fingerprint"
+    "data_pipeline/build_arz_heldout_v10.py now defaults to a complete 400,000-line training decontamination scan; the held-out text remains local-only"
   ],
-  "notes": "session state only; HEAD==origin/main=bea0b35. tokenizer bpe32k working copy preserves 32768 vocab with 4 legacy specials; HEAD stub is smaller and not usable. data/heldout stays local-only via .gitignore; heldout 100 lines PASS with zero train overlap on 400k checked lines."
+  "notes": "HEAD==origin/main=5c2ddfb. Held-out Egyptian test split: 100 lines, quality scan PASS, tokenizer eval PASS, zero final overlap across all 400,000 training lines. tokenizer bpe32k working copy remains uncommitted by design."
 }
