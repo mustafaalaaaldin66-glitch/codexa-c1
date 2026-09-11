@@ -105,6 +105,11 @@ def load(path: Path) -> Tokenizer:
     return Tokenizer.from_file(str(path))
 
 
+def _stable(metrics: dict) -> dict:
+    """Drop load-dependent fields so the saved report is reproducible."""
+    return {k: v for k, v in metrics.items() if k != "throughput_tok_s"}
+
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -150,7 +155,7 @@ def main() -> int:
         old_m = measure(old, texts)
         new_m = measure(new, texts)
         total_failed += new_m["roundtrip_failed"]
-        report["datasets"][name] = {"legacy": old_m, "v10": new_m}
+        report["datasets"][name] = {"legacy": _stable(old_m), "v10": _stable(new_m)}
         print(
             f"{name:<26}"
             f"{old_m['tokens_per_word']:>12.4f} ->{new_m['tokens_per_word']:>8.4f}"
