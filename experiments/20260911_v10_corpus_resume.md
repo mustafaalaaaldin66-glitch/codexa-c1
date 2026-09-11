@@ -39,13 +39,19 @@ Track A target: `C1-66 = 65,690,496` parameters (frozen)
 - Test suite passed: 17 tests.
 - Large local corpora and raw data remain outside GitHub by design.
 - Kaggle is not required for the current local validation and probe work.
+- BPE feasibility probe on a 16 MB sample: 0.32 MB/s, peak RSS 1,067 MB,
+  extrapolated full-corpus training about 195.8 minutes. Full local tokenizer
+  training is therefore deferred to an external GPU/RAM server.
+- C1-66 smoke test passed with one CPU thread: forward, finite loss, backward,
+  65,690,496 parameters, and tied embeddings.
 
 ## Pending / Next
 
 - Decide whether the 61,825-sample MSA corpus is sufficient for the tokenizer probe or obtain a larger approved MSA source before production training.
 - Train the v10 tokenizer: `.venv\Scripts\python.exe tokenizer\train_bpe_v10.py`
 - Evaluate it: `.venv\Scripts\python.exe tokenizer\evaluate.py` (after pointing it at the v10 artifact or copying).
-- Build the token cache and run the 20-step probe: `.venv\Scripts\python.exe train.py`
+- Build the token cache and run the 20-step probe only after a v10 tokenizer is
+   available: `.venv\Scripts\python.exe train.py`
 - Acceptance for step-0 loss ≈ 10.4 (ln 32768 ≈ 10.397) before any longer run.
 
 ## Rules Honored
