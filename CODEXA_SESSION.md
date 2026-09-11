@@ -197,3 +197,35 @@ When returning to this project:
 ## END OF SESSION
 The project is paused after the first real training attempt.
 No need to restart previous completed stages.
+
+## SESSION 2026-09-11 — v10 tokenizer validated + model init fixed + server gate
+
+Baseline: HEAD == origin/main == 316bf5e. Machine: E8400 2 cores, 4 GB RAM.
+
+DONE
+- Corpus v10 validated byte-for-byte (validate_v10_corpus.py -> PASS):
+  corpus 3,989,915,552 B; ar 61,825 lines; arz 400,000 lines; sha256 all match.
+- BPE feasibility measured (production path): 0.48-0.53 MB/s, peak RSS 415 MB
+  @42 MB and 730 MB @120 MB. Full 4 GB would take ~131 min and more RAM.
+- v10 tokenizer trained on a proportional 120 MB sample -> bpe32k_v10:
+  vocab 32,768, all 12 special tokens registered. Legacy bpe32k untouched.
+- v10 tokenizer accepted (evaluate_v10.py -> PASS): 0 round-trip failures,
+  0.0000% unknown, tokens/word improves on real holdout
+  (ar_msa 1.4255->1.3589, arz_egy 1.5592->1.4105).
+- BUG FIXED in model.py: default nn.Embedding init N(0,1) made step-0 loss
+  ~267. Added LLaMA-style init (std 0.02 + depth scaling). Step-0 loss is now
+  ~10.46 (~ln 32768 = 10.397). This resolves the old "loss != ~10.4" warning.
+- C1-66 smoke test OK; pytest 17 passed; check_model MATCH 65,690,496.
+- C1-66 CPU step benchmark: 11.238 s/step, 11.39 tok/s, peak RSS 1,354 MB.
+
+DECISION
+- Do NOT train the full 4 GB corpus or C1-66 on this CPU. Server needed only
+  for real pretraining / GPU / many runs. See
+  experiments/20260911_server_requirements.md.
+
+KNOWN CAVEAT
+- ~3% of ar.txt lines contain double spaces (older normalizer vintage);
+  cosmetic for tokenization, corpus NOT rebuilt.
+
+NEXT
+- Commit the validated tokenizer. Keep everything else local.
