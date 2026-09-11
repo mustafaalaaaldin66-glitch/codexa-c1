@@ -34,9 +34,10 @@ def eval_hashes() -> set[str]:
     return hashes
 
 
-def train_hashes(path: Path, limit: int = 20000) -> set[str]:
-    # Low-memory fingerprint: training files are already normalized, so hash
-    # raw bytes of the first `limit` lines instead of re-normalizing 1.1 GB.
+def train_hashes(path: Path, limit: int = 0) -> set[str]:
+    # Training files are already normalized, so hash raw line bytes. A limit
+    # above zero is only a diagnostic shortcut; production held-out builds
+    # use zero and scan the complete training file.
     seen: set[str] = set()
     if not path.exists():
         return seen
@@ -46,7 +47,7 @@ def train_hashes(path: Path, limit: int = 20000) -> set[str]:
             if not line:
                 continue
             seen.add(hashlib.sha256(line).hexdigest())
-            if len(seen) >= limit:
+            if limit > 0 and len(seen) >= limit:
                 break
     return seen
 
@@ -94,7 +95,12 @@ def split_long_text(text: str, limit: int = 8000) -> list[str]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build arz test-split held-out.")
     parser.add_argument("--max-lines", type=int, default=2000)
-    parser.add_argument("--train-limit", type=int, default=20000)
+    parser.add_argument(
+        "--train-limit",
+        type=int,
+        default=0,
+        help="diagnostic line limit; zero scans the complete training file",
+    )
     args = parser.parse_args()
     acquire_lock()
     try:

@@ -1,0 +1,31 @@
+{
+  "version": "arz_test_heldout_v1",
+  "created_at": "2026-09-11T19:40:02.630382+00:00",
+  "normalizer": "text.normalize.normalize_text",
+  "dedup": "exact SHA-256 of normalized text",
+  "train_hashes_checked": 400000,
+  "stats": {
+    "rows": 63,
+    "accepted": 100,
+    "dup": 0,
+    "eval_overlap": 0,
+    "train_overlap": 37,
+    "bad_length": 0
+  },
+  "source": {
+    "dataset_id": "HuggingFaceFW/fineweb-2",
+    "config": "arz_Arab",
+    "split": "test",
+    "files": [
+      "data\\raw\\fineweb2_arz_arab\\data\\arz_Arab\\test\\000_00000.parquet"
+    ],
+    "license": "ODC-By-1.0",
+    "provenance": "HuggingFace HuggingFaceFW/fineweb-2"
+  },
+  "output": {
+    "path": "data\\heldout\\arz_test_heldout.txt",
+    "bytes": 276468,
+    "lines": 100,
+    "sha256": "ab80d9edee0130a328375c58953b55be7bdfb3129b5582e9e75e126bbfc136e9"
+  }
+}
