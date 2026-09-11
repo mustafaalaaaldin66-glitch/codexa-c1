@@ -1,5 +1,6 @@
 ﻿from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 
 import torch
@@ -259,6 +260,26 @@ class C1Micro(nn.Module):
 
         # Tied embeddings.
         self.lm_head.weight = self.embed_tokens.weight
+
+        # Initialize weights. Without this, nn.Embedding defaults to N(0, 1),
+        # which blows up the logits (std ~ 20) and makes the step-0 loss
+        # ~267 instead of ~ln(vocab) ~ 10.4.
+        self.apply(self._init_weights)
+
+        # Depth-scaled init for residual output projections (GPT-2 / LLaMA).
+        residual_std = 0.02 / math.sqrt(2 * config.num_layers)
+        for name, param in self.named_parameters():
+            if name.endswith(("o_proj.weight", "down_proj.weight")):
+                nn.init.normal_(param, mean=0.0, std=residual_std)
+
+    @staticmethod
+    def _init_weights(module: nn.Module) -> None:
+        if isinstance(module, nn.Linear):
+            nn.init.normal_(module.weight, mean=0.0, std=0.02)
+            if module.bias is not None:
+                nn.init.zeros_(module.bias)
+        elif isinstance(module, nn.Embedding):
+            nn.init.normal_(module.weight, mean=0.0, std=0.02)
 
     def forward(
         self,
