@@ -13,12 +13,13 @@
   "python": "3.11.9",
   "torch": "2.6.0+cpu",
   "tokenizers": "0.23.1",
-  "current_phase": "phase-3-egyptian-heldout",
-  "last_successful_command": ".\\.venv\\Scripts\\python.exe runs/check_arz_decontam.py",
+  "current_phase": "phase-6-model-gate",
+  "last_successful_command": ".\\.venv\\Scripts\\python.exe check_model_c166.py",
   "next_command": "server-only: full-corpus tokenizer training plus expanded heldout; local model gate is smoke/pytest only",
   "blockers": [
     "working tree is dirty: tokenizer/artifacts/bpe32k/tokenizer.json is a 32768-vocab overwrite of a 272-vocab HEAD stub; do not claim clean",
     "do not run full 4GB corpus/tokenizer/model work on 4GB local machine; server required",
+    "smoke_test_c166.py exceeds 30s tool budget on this weak CPU; check_model_c166.py passes and smoke remains pending with longer budget",
     "data_pipeline/build_arz_heldout_v10.py now defaults to a complete 400,000-line training decontamination scan; the held-out text remains local-only"
   ],
   "notes": "HEAD==origin/main=960e071. Held-out Egyptian test split: 100 lines, quality scan PASS, tokenizer eval PASS, zero final overlap across all 400,000 training lines. tokenizer bpe32k working copy remains uncommitted by design."
