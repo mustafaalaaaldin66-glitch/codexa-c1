@@ -200,7 +200,8 @@ No need to restart previous completed stages.
 
 ## SESSION 2026-09-11 — v10 tokenizer validated + model init fixed + server gate
 
-Baseline: HEAD == origin/main == 316bf5e. Machine: E8400 2 cores, 4 GB RAM.
+Baseline for this session record: the repository was synchronized after the
+v10 tokenizer probe. Machine: E8400 2 cores, 4 GB RAM.
 
 DONE
 - Corpus v10 validated byte-for-byte (validate_v10_corpus.py -> PASS):
@@ -228,4 +229,5 @@ KNOWN CAVEAT
   cosmetic for tokenization, corpus NOT rebuilt.
 
 NEXT
-- Commit the validated tokenizer. Keep everything else local.
+- Keep the sample tokenizer explicitly marked as probe-only. Use an external
+  server for full-corpus tokenizer training and real pretraining.
