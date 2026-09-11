@@ -58,6 +58,8 @@ data/tokenizer_train_v9_1/
 data/tokenizer_train_v10/
 data/tokenizer/corpus.txt
 data/tokenizer/corpus.normalized.txt
+data/heldout/*.txt
+data/heldout/*.lock
 data/packed/
 data/raw/
 hf_cache/

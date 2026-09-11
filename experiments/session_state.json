@@ -1,0 +1,27 @@
+{
+  "version": "session-state-v1",
+  "updated_utc": "2026-09-11T00:00:00+00:00",
+  "branch": "main",
+  "commit_sha": "2e3f18708ee265a7bb10aaab5ccb07960b664a6e",
+  "working_tree": "dirty",
+  "dirty_files": [
+    ".gitignore",
+    "tokenizer/artifacts/bpe32k/tokenizer.json"
+  ],
+  "untracked": [
+    "data_pipeline/build_arz_heldout_v10.py",
+    "experiments/session_state.json"
+  ],
+  "python": "3.11.9",
+  "torch": "2.6.0+cpu",
+  "tokenizers": "0.23.1",
+  "current_phase": "phase-3-egyptian-heldout",
+  "last_successful_command": ".\\.venv\\Scripts\\python.exe runs/probe_arz_test9.py",
+  "next_command": ".\\.venv\\Scripts\\python.exe data_pipeline/build_arz_heldout_v10.py --max-lines 500 --train-limit 20000",
+  "blockers": [
+    "working tree is dirty: tokenizer/artifacts/bpe32k/tokenizer.json is a 32768-vocab overwrite of a 272-vocab HEAD stub; do not claim clean",
+    "do not run full 4GB corpus/tokenizer/model work on 4GB local machine; server required",
+    "data_pipeline/build_arz_heldout_v10.py exceeded 30s tool timeout once because train_hashes hashed 1.1GB; fixed to low-memory prefix fingerprint"
+  ],
+  "notes": "session state only; tokenizer bpe32k working copy preserves 32768 vocab with 4 legacy specials; HEAD stub is not a usable tokenizer"
+}
