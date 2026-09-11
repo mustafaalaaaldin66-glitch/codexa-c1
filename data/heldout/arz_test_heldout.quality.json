@@ -1,0 +1,16 @@
+{
+  "version": "arz_heldout_quality_v1",
+  "lines": 100,
+  "mean_len": 1547.98,
+  "min_len": 88,
+  "p50_len": 1668,
+  "max_len": 3102,
+  "arabic_character_ratio": 0.7839313169420794,
+  "words": 27693,
+  "unique_word_ratio": 0.40512042754486693,
+  "duplicate_lines": 0,
+  "invalid_utf8": 0,
+  "whitespace_anomalies": 0,
+  "language_ratio_note": "arz-only heldout by construction; source split=test",
+  "contamination_note": "decontaminated against full 400k-line arz training file at build time"
+}
