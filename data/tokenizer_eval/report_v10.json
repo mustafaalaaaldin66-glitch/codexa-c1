@@ -1,0 +1,426 @@
+{
+  "legacy_tokenizer": "tokenizer\\artifacts\\bpe32k\\tokenizer.json",
+  "v10_tokenizer": "tokenizer\\artifacts\\bpe32k_v10\\tokenizer.json",
+  "legacy_vocab": 32768,
+  "v10_vocab": 32768,
+  "datasets": {
+    "curated/adversarial/unicode": {
+      "legacy": {
+        "samples": 3,
+        "words": 14,
+        "chars": 35,
+        "tokens": 27,
+        "tokens_per_word": 1.9285714285714286,
+        "chars_per_token": 1.2962962962962963,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 3,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 1080.5575677207346
+      },
+      "v10": {
+        "samples": 3,
+        "words": 14,
+        "chars": 35,
+        "tokens": 20,
+        "tokens_per_word": 1.4285714285714286,
+        "chars_per_token": 1.75,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 3,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 52029.13628151104
+      }
+    },
+    "curated/adversarial/urls": {
+      "legacy": {
+        "samples": 2,
+        "words": 2,
+        "chars": 43,
+        "tokens": 18,
+        "tokens_per_word": 9.0,
+        "chars_per_token": 2.388888888888889,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 2,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 69740.41072522808
+      },
+      "v10": {
+        "samples": 2,
+        "words": 2,
+        "chars": 43,
+        "tokens": 16,
+        "tokens_per_word": 8.0,
+        "chars_per_token": 2.6875,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 2,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 68288.51883049385
+      }
+    },
+    "curated/arabic/dialects": {
+      "legacy": {
+        "samples": 3,
+        "words": 10,
+        "chars": 50,
+        "tokens": 19,
+        "tokens_per_word": 1.9,
+        "chars_per_token": 2.6315789473684212,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 3,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 50065.87612175537
+      },
+      "v10": {
+        "samples": 3,
+        "words": 10,
+        "chars": 50,
+        "tokens": 17,
+        "tokens_per_word": 1.7,
+        "chars_per_token": 2.9411764705882355,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 3,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 44736.84205760261
+      }
+    },
+    "curated/arabic/morphology": {
+      "legacy": {
+        "samples": 1,
+        "words": 8,
+        "chars": 46,
+        "tokens": 12,
+        "tokens_per_word": 1.5,
+        "chars_per_token": 3.8333333333333335,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 1,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 52816.90137265728
+      },
+      "v10": {
+        "samples": 1,
+        "words": 8,
+        "chars": 46,
+        "tokens": 13,
+        "tokens_per_word": 1.625,
+        "chars_per_token": 3.5384615384615383,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 1,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 50721.81041427856
+      }
+    },
+    "curated/arabic/msa": {
+      "legacy": {
+        "samples": 2,
+        "words": 18,
+        "chars": 126,
+        "tokens": 22,
+        "tokens_per_word": 1.2222222222222223,
+        "chars_per_token": 5.7272727272727275,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 2,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 36593.47968615674
+      },
+      "v10": {
+        "samples": 2,
+        "words": 18,
+        "chars": 126,
+        "tokens": 24,
+        "tokens_per_word": 1.3333333333333333,
+        "chars_per_token": 5.25,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 2,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 40934.6751041983
+      }
+    },
+    "curated/arabic/technical": {
+      "legacy": {
+        "samples": 3,
+        "words": 9,
+        "chars": 70,
+        "tokens": 16,
+        "tokens_per_word": 1.7777777777777777,
+        "chars_per_token": 4.375,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 3,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 42016.80670834885
+      },
+      "v10": {
+        "samples": 3,
+        "words": 9,
+        "chars": 70,
+        "tokens": 16,
+        "tokens_per_word": 1.7777777777777777,
+        "chars_per_token": 4.375,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 3,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 39177.277160366204
+      }
+    },
+    "curated/arabic": {
+      "legacy": {
+        "samples": 9,
+        "words": 57,
+        "chars": 373,
+        "tokens": 94,
+        "tokens_per_word": 1.6491228070175439,
+        "chars_per_token": 3.9680851063829787,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 9,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 51276.45647055263
+      },
+      "v10": {
+        "samples": 9,
+        "words": 57,
+        "chars": 373,
+        "tokens": 92,
+        "tokens_per_word": 1.6140350877192982,
+        "chars_per_token": 4.054347826086956,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 9,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 51552.168551313116
+      }
+    },
+    "curated/english/general": {
+      "legacy": {
+        "samples": 1,
+        "words": 10,
+        "chars": 69,
+        "tokens": 37,
+        "tokens_per_word": 3.7,
+        "chars_per_token": 1.864864864864865,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 1,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 132711.62115764178
+      },
+      "v10": {
+        "samples": 1,
+        "words": 10,
+        "chars": 69,
+        "tokens": 25,
+        "tokens_per_word": 2.5,
+        "chars_per_token": 2.76,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 1,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 87688.53008257874
+      }
+    },
+    "curated/english/long_words": {
+      "legacy": {
+        "samples": 1,
+        "words": 3,
+        "chars": 50,
+        "tokens": 21,
+        "tokens_per_word": 7.0,
+        "chars_per_token": 2.380952380952381,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 1,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 117449.6644572202
+      },
+      "v10": {
+        "samples": 1,
+        "words": 3,
+        "chars": 50,
+        "tokens": 15,
+        "tokens_per_word": 5.0,
+        "chars_per_token": 3.3333333333333335,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 1,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 89020.77164801558
+      }
+    },
+    "curated/english/technical": {
+      "legacy": {
+        "samples": 1,
+        "words": 8,
+        "chars": 62,
+        "tokens": 36,
+        "tokens_per_word": 4.5,
+        "chars_per_token": 1.7222222222222223,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 1,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 144288.5772227437
+      },
+      "v10": {
+        "samples": 1,
+        "words": 8,
+        "chars": 62,
+        "tokens": 28,
+        "tokens_per_word": 3.5,
+        "chars_per_token": 2.2142857142857144,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 1,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 111022.9978311761
+      }
+    },
+    "curated/english": {
+      "legacy": {
+        "samples": 7,
+        "words": 43,
+        "chars": 306,
+        "tokens": 158,
+        "tokens_per_word": 3.6744186046511627,
+        "chars_per_token": 1.9367088607594938,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 7,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 111890.09273954586
+      },
+      "v10": {
+        "samples": 7,
+        "words": 43,
+        "chars": 306,
+        "tokens": 113,
+        "tokens_per_word": 2.627906976744186,
+        "chars_per_token": 2.7079646017699117,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 7,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 89611.41954875644
+      }
+    },
+    "curated/mixed/arabic_english": {
+      "legacy": {
+        "samples": 2,
+        "words": 11,
+        "chars": 83,
+        "tokens": 35,
+        "tokens_per_word": 3.1818181818181817,
+        "chars_per_token": 2.3714285714285714,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 2,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 27410.13390846125
+      },
+      "v10": {
+        "samples": 2,
+        "words": 11,
+        "chars": 83,
+        "tokens": 28,
+        "tokens_per_word": 2.5454545454545454,
+        "chars_per_token": 2.9642857142857144,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 2,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 70600.10095053639
+      }
+    },
+    "curated/mixed/technical_mixed": {
+      "legacy": {
+        "samples": 1,
+        "words": 8,
+        "chars": 51,
+        "tokens": 23,
+        "tokens_per_word": 2.875,
+        "chars_per_token": 2.217391304347826,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 1,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 95554.63225223357
+      },
+      "v10": {
+        "samples": 1,
+        "words": 8,
+        "chars": 51,
+        "tokens": 21,
+        "tokens_per_word": 2.625,
+        "chars_per_token": 2.4285714285714284,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 1,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 90439.27647501475
+      }
+    },
+    "curated/mixed": {
+      "legacy": {
+        "samples": 5,
+        "words": 29,
+        "chars": 197,
+        "tokens": 78,
+        "tokens_per_word": 2.689655172413793,
+        "chars_per_token": 2.5256410256410255,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 5,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 85171.43478717862
+      },
+      "v10": {
+        "samples": 5,
+        "words": 29,
+        "chars": 197,
+        "tokens": 67,
+        "tokens_per_word": 2.310344827586207,
+        "chars_per_token": 2.9402985074626864,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 5,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 72542.22610146024
+      }
+    },
+    "holdout/ar_msa": {
+      "legacy": {
+        "samples": 496,
+        "words": 200148,
+        "chars": 1171300,
+        "tokens": 285319,
+        "tokens_per_word": 1.4255401003257588,
+        "chars_per_token": 4.1052295851310285,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 496,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 53963.47326563649
+      },
+      "v10": {
+        "samples": 496,
+        "words": 200148,
+        "chars": 1171300,
+        "tokens": 271972,
+        "tokens_per_word": 1.3588544477086955,
+        "chars_per_token": 4.306693336078714,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 496,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 62104.34233738699
+      }
+    },
+    "holdout/arz_egy": {
+      "legacy": {
+        "samples": 734,
+        "words": 212903,
+        "chars": 1181012,
+        "tokens": 331950,
+        "tokens_per_word": 1.559160744564426,
+        "chars_per_token": 3.557800873625546,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 734,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 56194.512679898835
+      },
+      "v10": {
+        "samples": 734,
+        "words": 212903,
+        "chars": 1181012,
+        "tokens": 300310,
+        "tokens_per_word": 1.4105484657332212,
+        "chars_per_token": 3.932642935633179,
+        "unk_rate": 0.0,
+        "roundtrip_passed": 734,
+        "roundtrip_failed": 0,
+        "throughput_tok_s": 50895.81187852854
+      }
+    }
+  },
+  "total_roundtrip_failed_v10": 0,
+  "status": "PASS"
+}

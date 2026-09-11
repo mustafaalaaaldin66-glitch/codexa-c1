@@ -44,6 +44,10 @@ Track A target: `C1-66 = 65,690,496` parameters (frozen)
   training is therefore deferred to an external GPU/RAM server.
 - C1-66 smoke test passed with one CPU thread: forward, finite loss, backward,
   65,690,496 parameters, and tied embeddings.
+- A 120 MB proportional sample tokenizer was trained for feasibility only. Its
+   evaluation passed with vocab 32,768, zero unknowns, and zero round-trip
+   failures, but it is not the production tokenizer because the full corpus was
+   not used. The trainer now refuses input with normalization mismatches.
 
 ## Pending / Next
 

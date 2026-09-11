@@ -1,0 +1,45 @@
+{
+  "version": "tokenizer_v10",
+  "created_at": "2026-09-11T17:43:35.457567+00:00",
+  "normalizer": "text.normalize.normalize_text",
+  "vocab_size": 32768,
+  "min_frequency": 2,
+  "corpus": {
+    "path": "runs\\v10_sample_120.txt",
+    "bytes": 125825428,
+    "sha256": "a9f22e360bb891f35ddb8f8e009947fd7e4390bf0d06262b0a8324f119c1ec96"
+  },
+  "special_tokens": [
+    "<pad>",
+    "<unk>",
+    "<s>",
+    "</s>",
+    "<mask>",
+    "<ar>",
+    "<en>",
+    "<code>",
+    "<math>",
+    "<user>",
+    "<assistant>",
+    "<system>"
+  ],
+  "added_tokens": [
+    "<pad>",
+    "<unk>",
+    "<s>",
+    "</s>",
+    "<mask>",
+    "<ar>",
+    "<en>",
+    "<code>",
+    "<math>",
+    "<user>",
+    "<assistant>",
+    "<system>"
+  ],
+  "normalization_check": {
+    "checked": 200,
+    "mismatches": 6,
+    "example": "مفاعل الماء الثقيل المضغوط مفاعل الماء الثقيل المضغوط (بالإنجليزية: pressurised "
+  }
+}
