@@ -1,0 +1,52 @@
+{
+  "version": "heldout_eval_v1",
+  "heldout": {
+    "path": "data\\heldout\\arz_test_heldout.txt",
+    "lines": 100,
+    "sha256": "ab80d9edee0130a328375c58953b55be7bdfb3129b5582e9e75e126bbfc136e9"
+  },
+  "tokenizer": {
+    "path": "tokenizer\\artifacts\\bpe32k_v10\\tokenizer.json",
+    "sha256": "5fbfc06d3601fb7a94cc630ce406c548cd89f69b62e0c67fdeb69ca28dd3a156",
+    "vocab_size": 32768
+  },
+  "metrics": {
+    "samples": 100,
+    "words": 27693,
+    "chars": 154798,
+    "tokens": 56747,
+    "tokens_per_word": 2.049145993572383,
+    "chars_per_token": 2.7278622658466527,
+    "unk_rate": 0.0,
+    "roundtrip_passed": 100,
+    "roundtrip_failed": 0,
+    "worst_cases": [
+      {
+        "tokens_per_word": 3.036,
+        "tokens": 759,
+        "head": "بةشى ثينجةم Bahary Dillan بةرةو دلنيايى |ثيشةكى||هةق وراستى| |طةران بةدواى هةق و"
+      },
+      {
+        "tokens_per_word": 2.9825,
+        "tokens": 850,
+        "head": "سةرةوة (127) خواى ثةروةردطار رينومايى هةموو طيانداريكى كردوة : ئةطةر سةيرى جيهان"
+      },
+      {
+        "tokens_per_word": 2.9774,
+        "tokens": 923,
+        "head": "يةكةم : لةكؤتايى سالى 1999 ز لة فرؤكةخانةى دوبةى ثياويكى سةر بة دةزطاى مؤسادى ئي"
+      },
+      {
+        "tokens_per_word": 2.8766,
+        "tokens": 909,
+        "head": "* خانةكانى لةشى مرؤظ هةنديكيان لةضةند ساتيكدا دةمرن ، هةنديكيان وةك ثيست لةدواى "
+      },
+      {
+        "tokens_per_word": 2.8408,
+        "tokens": 946,
+        "head": "* زانايان دةلين بارستايى زةوى 5,5 مليار مليار تةنة بةدةروى تةوةرى خؤيدا دةخوليتة"
+      }
+    ]
+  },
+  "status": "PASS"
+}

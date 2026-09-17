@@ -1,0 +1,22 @@
+{
+  "version": "normalization_report_v1",
+  "corpus": "curated eval set (data/tokenizer_eval)",
+  "analysis": {
+    "samples": 41,
+    "changed_by_normalization": 6,
+    "unchanged": 35,
+    "changed_rate": 0.14634146341463414,
+    "reason_counts": {
+      "nfkc": 0,
+      "tatweel": 1,
+      "diacritics": 2,
+      "whitespace": 3
+    },
+    "reason_examples": {
+      "whitespace": "أ إ آ ؤ ئ ء ة ى ",
+      "diacritics": "البرمجة والذكاء الاصطناعي من المجالات التي نريد دعمها جيدًا.",
+      "tatweel": "الـTransformer يحتاج إلى attention mechanism."
+    },
+    "invariant": "decode(encode(raw)) == raw holds for the byte-level tokenizer; normalization is a separate, mandatory pipeline step"
+  }
+}

@@ -1,16 +1,51 @@
 {
-  "version": "arz_heldout_quality_v1",
-  "lines": 100,
-  "mean_len": 1547.98,
-  "min_len": 88,
-  "p50_len": 1668,
-  "max_len": 3102,
-  "arabic_character_ratio": 0.7839313169420794,
-  "words": 27693,
-  "unique_word_ratio": 0.40512042754486693,
-  "duplicate_lines": 0,
-  "invalid_utf8": 0,
-  "whitespace_anomalies": 0,
-  "language_ratio_note": "arz-only heldout by construction; source split=test",
-  "contamination_note": "decontaminated against full 400k-line arz training file at build time"
+  "version": "arz_heldout_quality_v2",
+  "heldout": {
+    "path": "data\\heldout\\arz_test_heldout.txt",
+    "sha256": "ab80d9edee0130a328375c58953b55be7bdfb3129b5582e9e75e126bbfc136e9"
+  },
+  "text": {
+    "lines": 100,
+    "mean_len": 1547.98,
+    "min_len": 88,
+    "p50_len": 1668,
+    "p90_len": 2437,
+    "max_len": 3102,
+    "chars": 154798,
+    "arabic_character_ratio": 0.7839313169420794,
+    "words": 27693,
+    "unique_words": 11219,
+    "unique_word_ratio": 0.40512042754486693,
+    "duplicate_lines": 0,
+    "duplicate_rate": 0.0,
+    "invalid_utf8": 0,
+    "whitespace_anomalies": 0
+  },
+  "source_balance": {
+    "available": true,
+    "bytes_by_language": {
+      "ar": 2806077399,
+      "arz": 1183838153,
+      "en": 0
+    },
+    "share_by_language": {
+      "ar": 0.7032924287315844,
+      "arz": 0.2967075712684157,
+      "en": 0.0
+    },
+    "msa_share": 0.7032924287315844,
+    "egyptian_share": 0.2967075712684157,
+    "msa_to_egyptian_ratio": 2.37032181459014
+  },
+  "contamination": {
+    "available": true,
+    "train_overlap_rejected": 37,
+    "eval_overlap_rejected": 0,
+    "train_hashes_checked": 400000,
+    "dup_rejected": 0,
+    "contamination_count": 37,
+    "heldout_lines_final": 100
+  },
+  "language_ratio_note": "held-out is arz-only by construction (FineWeb2 arz_Arab, split=test)",
+  "status": "PASS"
 }
