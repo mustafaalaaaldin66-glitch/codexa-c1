@@ -1,0 +1,74 @@
+{
+  "version": "mix-taxonomy-v1",
+  "purpose": "Server-side corpus expansion spec. No bulk data is generated locally; this file is the plan the server runbook executes against.",
+  "languages": {
+    "msa": "ar",
+    "arz": "arz",
+    "en": "en",
+    "code_math": "code_math"
+  },
+  "language_ratio_note": "MSA:Egyptian ~2.37 observed on the v10 sample is a baseline, not a final decision. Final ratios are set after server fertility analysis.",
+  "domains": [
+    {"id": "general_web", "weight": 0.14, "subdomains": [
+      {"id": "blogs", "languages": ["msa", "arz", "en"]},
+      {"id": "forums", "languages": ["msa", "arz", "en"]},
+      {"id": "comments", "languages": ["arz", "msa", "en"]}
+    ]},
+    {"id": "encyclopedic", "weight": 0.14, "subdomains": [
+      {"id": "science", "languages": ["msa", "en"]},
+      {"id": "history", "languages": ["msa", "en"]},
+      {"id": "geography", "languages": ["msa", "en"]},
+      {"id": "biographies", "languages": ["msa", "en"]},
+      {"id": "culture", "languages": ["msa", "arz"]}
+    ]},
+    {"id": "news_journalism", "weight": 0.12, "subdomains": [
+      {"id": "politics", "languages": ["msa"]},
+      {"id": "economy", "languages": ["msa", "en"]},
+      {"id": "sports", "languages": ["msa", "arz"]},
+      {"id": "tech_news", "languages": ["msa", "en"]}
+    ]},
+    {"id": "egyptian_dialogue", "weight": 0.10, "subdomains": [
+      {"id": "social_media", "languages": ["arz"]},
+      {"id": "forum_threads", "languages": ["arz"]},
+      {"id": "reader_comments", "languages": ["arz"]}
+    ]},
+    {"id": "education", "weight": 0.08, "subdomains": [
+      {"id": "school_material", "languages": ["msa"]},
+      {"id": "university_notes", "languages": ["msa", "en"]},
+      {"id": "howto_guides", "languages": ["msa", "arz", "en"]}
+    ]},
+    {"id": "science_tech", "weight": 0.08, "subdomains": [
+      {"id": "mathematics", "languages": ["msa", "en"]},
+      {"id": "physics", "languages": ["msa", "en"]},
+      {"id": "computer_science", "languages": ["msa", "en"]},
+      {"id": "engineering", "languages": ["msa", "en"]}
+    ]},
+    {"id": "code_technical", "weight": 0.07, "subdomains": [
+      {"id": "code_docs", "languages": ["en", "code_math"]},
+      {"id": "api_references", "languages": ["en", "code_math"]},
+      {"id": "mixed_code_comments", "languages": ["en", "arz", "msa"]}
+    ]},
+    {"id": "literature", "weight": 0.07, "subdomains": [
+      {"id": "prose", "languages": ["msa"]},
+      {"id": "poetry", "languages": ["msa", "arz"]},
+      {"id": "short_stories", "languages": ["msa", "arz"]}
+    ]},
+    {"id": "health", "weight": 0.05, "subdomains": [
+      {"id": "medicine", "languages": ["msa", "en"]},
+      {"id": "nutrition", "languages": ["msa", "arz"]}
+    ]},
+    {"id": "business", "weight": 0.05, "subdomains": [
+      {"id": "finance", "languages": ["msa", "en"]},
+      {"id": "marketing", "languages": ["msa", "en"]}
+    ]},
+    {"id": "daily_life", "weight": 0.05, "subdomains": [
+      {"id": "cooking", "languages": ["arz", "msa"]},
+      {"id": "travel", "languages": ["msa", "arz", "en"]},
+      {"id": "family", "languages": ["arz", "msa"]}
+    ]},
+    {"id": "religion", "weight": 0.05, "subdomains": [
+      {"id": "islamic_studies", "languages": ["msa"]},
+      {"id": "comparative_religion", "languages": ["msa", "en"]}
+    ]}
+  ]
+}
