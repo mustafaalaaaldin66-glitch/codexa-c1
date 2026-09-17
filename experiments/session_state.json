@@ -1,11 +1,10 @@
 {
   "version": "session-state-v1",
-  "updated_utc": "2026-09-17T21:15:59+00:00",
+  "updated_utc": "2026-09-17T21:17:32+00:00",
   "branch": "main",
-  "commit_sha": "ba67d2864ac2d6bcf8166d305cd604140f195e84",
+  "commit_sha": "5e13b464542c5cb4caeee59b8468ea211e43d7ab",
   "working_tree": "dirty",
   "dirty_files": [
-    "experiments/session_state.json",
     "tokenizer/artifacts/bpe32k/tokenizer.json"
   ],
   "untracked": [],
@@ -13,8 +12,8 @@
   "torch": "2.6.0+cpu",
   "tokenizers": "0.23.1",
   "current_phase": "local-hardening-p1-p8",
-  "last_successful_command": "git push origin main ba67d28; session guard PASS with HEAD==origin/main",
-  "next_command": "commit the ba67d28-synced session state, then start local P1 tokenizer audit in small <30s chunks",
+  "last_successful_command": "git push origin main 5e13b46; session guard PASS with HEAD==origin/main",
+  "next_command": "start local P1 tokenizer audit in small <30s chunks; keep bpe32k tokenizer diff uncommitted by design",
   "blockers": [
     "working tree carries tokenizer/artifacts/bpe32k/tokenizer.json: a 32768-vocab working copy vs a 272-vocab HEAD stub; never commit that 162k-line diff",
     "no full-corpus tokenizer training and no real pretraining on this 4GB / E8400 CPU",
