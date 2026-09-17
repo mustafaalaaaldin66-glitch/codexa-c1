@@ -2,7 +2,7 @@
   "version": "session-state-v1",
   "updated_utc": "2026-09-17T00:00:00+00:00",
   "branch": "main",
-  "commit_sha": "3a4baaa82a291c0a84ab806be0b4ecc9232b348c",
+  "commit_sha": "8dd8e9e7cca8a65abc82c309adcfd561307081c3",
   "working_tree": "dirty",
   "dirty_files": [
     "tokenizer/artifacts/bpe32k/tokenizer.json"
@@ -23,5 +23,5 @@
     "smoke_test_c166.py exceeds 30s tool budget on this weak CPU; check_model_c166.py passes and smoke remains pending with longer budget",
     "data_pipeline/build_arz_heldout_v10.py now defaults to a complete 400,000-line training decontamination scan; the held-out text remains local-only"
   ],
-  "notes": "HEAD==origin/main=3a4baaa. Held-out Egyptian test split: 100 lines, quality scan PASS, tokenizer eval PASS, zero final overlap across all 400,000 training lines. tokenizer bpe32k working copy remains uncommitted by design."
+  "notes": "HEAD==origin/main=8dd8e9e. Held-out Egyptian test split: 100 lines, quality scan PASS, tokenizer eval PASS, zero final overlap across all 400,000 training lines. tokenizer bpe32k working copy remains uncommitted by design."
 }
